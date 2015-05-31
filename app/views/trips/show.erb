@@ -1,0 +1,11 @@
+  <h1 class='trip-title'><%= @trip.trip_name %></h1>
+  <h2 class='trip-dates'><%= @trip.trip_dates %></h2>
+
+
+  <div class='members'>
+    <h2>Who is going on this trip?</h2>
+    <% @members.each do |member| %>
+        <p><%= member.member_name %></p>
+        <p><%= member.member_email %></p>
+    <%end%>
+  </div>
