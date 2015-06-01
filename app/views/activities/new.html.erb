@@ -1,0 +1,29 @@
+
+    <%= form_for [@user, @trip, @activity] do |f| %>
+      <p>
+      <%= f.label :act_name %>
+      <%= f.text_field :act_name  %>
+      </p>
+
+      <p>
+      <%= f.label :act_location %>
+      <%= f.text_field :act_location  %>
+      </p>
+
+      <p>
+      <%= f.label :act_cost %>
+      <%= f.text_field :act_cost  %>
+      </p>
+
+      <p>
+      <%= f.label :link %>
+      <%= f.text_field :link  %>
+      </p>
+
+      <%= f.hidden_field :trip_id, :value => @trip.id %>
+
+      <p>
+      <%= f.submit %>
+      </p>
+
+    <%end%>

@@ -1,0 +1,19 @@
+
+    <%= form_for [@user, @trip, @note] do |f| %>
+      <p>
+      <%= f.label :author %>
+      <%= f.text_field :author  %>
+      </p>
+
+      <p>
+      <%= f.label :body %>
+      <%= f.text_field :body  %>
+      </p>
+
+      <%= f.hidden_field :trip_id, :value => @trip.id %>
+
+      <p>
+      <%= f.submit %>
+      </p>
+
+    <%end%>

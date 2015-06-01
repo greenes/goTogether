@@ -1,0 +1,36 @@
+
+
+header{
+  float: right;
+  display: inline-block;
+}
+
+html {
+  background:url('http://www.hdwallpapersos.com/wp-content/uploads/2014/08/Eiffel-at-Night-hd-Wallpaper-hd.jpg') no-repeat center center fixed;
+  -webkit-background-size: 120%;
+  -moz-background-size: 120%;
+  -o-background-size: 120%;
+  background-size: 120%;
+}
+
+.homebox {
+  color: #00113a;
+  opacity: .8;
+  background: #e1e2df;
+  border-radius: 15px;
+  width: 800px;
+  text-align: center;
+  font-family: arial, sans-serif;
+  margin: 200px auto;
+
+}
+
+.main-tagline {
+  display: inline-block;
+
+
+}
+
+.main-title {
+  display: block;
+}

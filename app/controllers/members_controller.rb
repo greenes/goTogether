@@ -1,14 +1,9 @@
-class TripsController < ApplicationController
+class MembersController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    @trips = Trip.all
-    @user = current_user
-  end
-
   def show
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
     @user = current_user
     @members = @trip.members.all
     @notes = @trip.notes.all
@@ -17,13 +12,15 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+    @trip = Trip.find(params[:trip_id])
+    @member = Member.new
     @user = current_user
   end
 
   def create
-    @trip = Trip.new(trip_params)
-    if @trip.save
+    @member = Member.new(member_params)
+    @trip = Trip.find(params[:trip_id])
+    if @member.save
       @user = current_user
       redirect_to user_trip_path(@user, @trip)
     else
@@ -39,12 +36,8 @@ class TripsController < ApplicationController
 
 
 private
-  def trip_params
-    params.require(:trip).permit(:trip_name, :trip_dates, :trip_location )
-  end
-
-  def usertrip_params
-    params.require(:usertrip).permit(:trip_id, :user_id )
+  def member_params
+    params.require(:member).permit(:member_name, :member_email, :trip_id )
   end
 
 
