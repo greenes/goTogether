@@ -13,6 +13,7 @@ class TripsController < ApplicationController
     @members = @trip.members.all
     @notes = @trip.notes.all
     @accommodations = @trip.accommodations.all
+
     @activities = @trip.activities.all
   end
 

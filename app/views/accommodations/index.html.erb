@@ -1,0 +1,8 @@
+<p><%= form_tag "/users/#{@user.id}/trips/#{@trip.id}/accommodations", method: "get" do %>
+  <%= label_tag(:query, "Search for Accommodations:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %></p>
+
+
+<%=@search%>

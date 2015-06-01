@@ -3,6 +3,9 @@ class AccommodationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @user = current_user
+    @trip = Trip.find(params[:trip_id])
+    @search = Accommodation.search(params[:query])
   end
 
   def new
