@@ -1,11 +1,15 @@
-class MembersController < ApplicationController
+class MembershipsController < ApplicationController
 
   before_action :authenticate_user!
+
+  def index
+    @user = current_user
+    @memberships = Membership.where(:user_id => @user.id)
+  end
 
   def show
     @trip = Trip.find(params[:trip_id])
     @user = current_user
-    @members = @trip.members.all
     @notes = @trip.notes.all
     @accommodations = @trip.accommodations.all
     @activities = @trip.activities.all
@@ -13,12 +17,10 @@ class MembersController < ApplicationController
 
   def new
     @trip = Trip.find(params[:trip_id])
-    @member = Member.new
     @user = current_user
   end
 
   def create
-    @member = Member.new(member_params)
     @trip = Trip.find(params[:trip_id])
     if @member.save
       @user = current_user

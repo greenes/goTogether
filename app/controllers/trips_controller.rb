@@ -10,10 +10,9 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @user = current_user
-    @members = @trip.members.all
+    @memberships = Membership.where(:trip_id => @trip.id)
     @notes = @trip.notes.all
     @accommodations = @trip.accommodations.all
-
     @activities = @trip.activities.all
   end
 
@@ -26,11 +25,19 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       @user = current_user
+      @membership = Membership.new(membership_params)
       redirect_to user_trip_path(@user, @trip)
     else
      render :new
     end
   end
+
+  # def join
+  #   @trip = Trip.find(params[:id])
+  #   @trip.users << current_user
+  #   @trip.save
+  #
+  # end
 
   def update
   end
@@ -44,8 +51,8 @@ private
     params.require(:trip).permit(:trip_name, :trip_dates, :trip_location )
   end
 
-  def usertrip_params
-    params.require(:usertrip).permit(:trip_id, :user_id )
+  def membership_params
+    params.require(:membership).permit(:trip_id, :user_id, :pending )
   end
 
 

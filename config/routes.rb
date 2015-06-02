@@ -2,14 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-
   resources :users do
+    resources :memberships
+  end
+
     resources :trips  do
-      resources :members, only: [:new, :create, :update, :delete]
+      resources :memberships, only: [:new, :create, :update, :delete]
       resources :accommodations, only: [:index, :show, :new, :create, :update, :delete]
       resources :activities, only: [:new, :create, :update, :delete]
       resources :notes, only: [:new, :create, :update, :delete]
-    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

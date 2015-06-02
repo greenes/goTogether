@@ -3,7 +3,7 @@ class Trip < ActiveRecord::Base
   has_many :notes
   has_many :activities
   has_many :accommodations
-  has_and_belongs_to_many :users
-
+  has_many :users, through: :memberships
+  belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
 end

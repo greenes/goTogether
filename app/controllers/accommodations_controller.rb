@@ -5,7 +5,7 @@ class AccommodationsController < ApplicationController
   def index
     @user = current_user
     @trip = Trip.find(params[:trip_id])
-    @search = Accommodation.search(params[:query])
+    @results = Accommodation.search(params[:query])
   end
 
   def new

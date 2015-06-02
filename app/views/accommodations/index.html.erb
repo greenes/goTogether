@@ -5,4 +5,16 @@
 <% end %></p>
 
 
-<%=@search%>
+  <% num_of_results = @results["ids"].length %>
+  <% index = 0%>
+  <%= while index < num_of_results do %>
+    <h3 class='result-number'><%= "#{index + 1}. " + @results["result"][index]["attr"]["propType"]["text"]%></h3>
+    <h3 class='result-attr'><%= "room type: " + @results["result"][index]["attr"]["roomType"]["text"]%></h3>
+    <h3 class='result-attr'><%= "number of bathrooms: " + @results["result"][index]["attr"]["bathrooms"].to_s%></h3>
+    <h3 class='result-attr'><%= "bedrooms: " + @results["result"][index]["attr"]["bedrooms"].to_s%></h3>
+    <h3 class='result-attr'><%= "occupancy: " + @results["result"][index]["attr"]["occupancy"].to_s%></h3>
+    <h3 class='result-attr'><%= "beds: " + @results["result"][index]["attr"]["beds"].to_s%></h3>
+    <h3 class='result-attr'><%= "description: " + @results["result"][index]["attr"]["description"].to_s%></h3>
+    <% index = index + 1 %>
+
+    <%end%>

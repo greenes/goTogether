@@ -8,11 +8,11 @@
   <div class='members'>
     <h2>Who is going on this trip?</h2>
     <h3><%= @user.email %></h3>
-    <% @members.each do |member| %>
+    <% @memberships.each do |member| %>
         <p><%= member.member_name %></p>
         <p><%= member.member_email %></p>
     <%end%>
-    <p class='button'> <%=link_to 'add a member', new_user_trip_member_path(@user, @trip)%> </p>
+    <p class='button'> <%=link_to 'add a member', new_trip_membership_path(@user, @trip)%> </p>
   </div>
 
 <div class='itinerary'>
