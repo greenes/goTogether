@@ -1,4 +1,21 @@
 
+<% if @results %>
+    <%= form_for [@trip, @accommodation] do |f| %>
+
+      <%= f.hidden_field :acc_name, :value => @type %>
+      <%= f.hidden_field :acc_location, :value => @location %>
+      <%= f.hidden_field :acc_link, :value => @link %>
+      <%= f.hidden_field :acc_cost, :value => @pernight %>
+      <%= f.hidden_field :trip_id, :value => @trip.id %>
+
+      <p>
+      <%= f.submit %>
+      </p>
+
+    <%end%>
+
+<% else %>
+
     <%= form_for [@trip, @accommodation] do |f| %>
       <p>
       <%= f.label :acc_name %>
@@ -31,3 +48,4 @@
       </p>
 
     <%end%>
+<%end%>

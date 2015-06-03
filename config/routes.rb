@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       resources :activities, only: [:new, :create, :update, :destroy]
       resources :notes, only: [:new, :create, :update, :destroy]
   end
+
+  get '/trips/:trip_id/accommodations/new/:index' => 'accommodations#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
