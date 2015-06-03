@@ -10,16 +10,16 @@ class AccommodationsController < ApplicationController
 
   def new
     @trip = Trip.find(params[:trip_id])
-    @accommodation = Accommodation.new
+    @accommodation = Accommodation.new(acc_name: @type , acc_location: @location, acc_cost: @pernight, acc_link: @link, trip_id: @trip.id )
     @user = current_user
   end
 
   def create
-    @accommodation = Accommodation.new(accommodation_params)
     @trip = Trip.find(params[:trip_id])
+    @accommodation = Accommodation.new(acc_name: @type , acc_location: @location, acc_cost: @pernight, acc_link: @link, trip_id: @trip.id )
     if @accommodation.save
       @user = current_user
-      redirect_to user_trip_path(@user, @trip)
+      redirect_to trip_path(@trip)
     else
      render :new
     end

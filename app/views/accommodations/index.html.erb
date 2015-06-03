@@ -1,21 +1,44 @@
-<p><%= form_tag "/users/#{@user.id}/trips/#{@trip.id}/accommodations", method: "get" do %>
+<p><%= form_tag "/trips/#{@trip.id}/accommodations", method: "get" do %>
   <%= label_tag(:query, "Search for Accommodations:") %>
   <%= text_field_tag(:query) %>
   <%= submit_tag("Search") %>
 <% end %></p>
 
 
+
 <div class='acc-results'
   <% num_of_results = @results["ids"].length %>
   <% index = 0%>
   <%= while index < num_of_results do %>
-    <h3 class='result-number'><%= "#{index + 1}. " + @results["result"][index]["attr"]["propType"]["text"]%></h3>
-    <h3 class='result-attr'><%= "room type: " + @results["result"][index]["attr"]["roomType"]["text"]%></h3>
-    <h3 class='result-attr'><%= "number of bathrooms: " + @results["result"][index]["attr"]["bathrooms"].to_s%></h3>
-    <h3 class='result-attr'><%= "bedrooms: " + @results["result"][index]["attr"]["bedrooms"].to_s%></h3>
-    <h3 class='result-attr'><%= "occupancy: " + @results["result"][index]["attr"]["occupancy"].to_s%></h3>
-    <h3 class='result-attr'><%= "beds: " + @results["result"][index]["attr"]["beds"].to_s%></h3>
-    <h3 class='result-attr'><%= "description: " + @results["result"][index]["attr"]["description"].to_s%></h3>
+    <h3 class='result-number'><%= "#{index + 1}. "%> </h3>
+    <% @location = @results["result"][index]["location"]["all"]%>
+    <% @link = @results["result"][index]["provider"]["url"].to_s%>
+    <% @type = @results["result"][index]["attr"]["propType"]["text"]%>
+    <% @roomtype = @results["result"][index]["attr"]["roomType"]["text"]%>
+    <% @baths = @results["result"][index]["attr"]["bathrooms"].to_s%>
+    <% @beds = @results["result"][index]["attr"]["bedrooms"].to_s%>
+    <% @occupancy = @results["result"][index]["attr"]["occupancy"].to_s%>
+    <% @numbeds = @results["result"][index]["attr"]["beds"].to_s%>
+    <% @pernight = @results["result"][index]["price"]["nightly"].to_s %>
+    <% @perweek = @results["result"][index]["price"]["weekly"].to_s %>
+    <% @description = @results["result"][index]["attr"]["description"].to_s%>
+
+
+
+    <div class='thumbnail'><%= image_tag("#{@results["result"][index]["photos"][0]["small"]}", height: "300", width: "300")%></h3><div>
+    <h3 class='result-attr'><%= "location: " + @location%></h3>
+    <h3 class='result-attr'><%= "more details: " + @link%></h3>
+    <h3 class='result-attr'><%= "type: " + @type%></h3>
+    <h3 class='result-attr'><%= "room type: " + @roomtype%></h3>
+    <h3 class='result-attr'><%= "number of bathrooms: " + @baths%></h3>
+    <h3 class='result-attr'><%= "bedrooms: " + @beds%></h3>
+    <h3 class='result-attr'><%= "occupancy: " + @occupancy%></h3>
+    <h3 class='result-attr'><%= "beds: " + @numbeds%></h3>
+    <h3 class='result-attr'><%= "Cost per night: " + @pernight %></h3>
+    <h3 class='result-attr'><%= "Cost per week: " + @perweek %></h3>
+    <h3 class='result-attr'><%= "description: " + @description%></h3>
+
+    <%= link_to 'add to your trip', new_trip_accommodation_path(@trip)%>
     <% index = index + 1 %>
 
     <%end%>
