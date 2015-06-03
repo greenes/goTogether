@@ -17,29 +17,39 @@ class MembershipsController < ApplicationController
 
   def new
     @trip = Trip.find(params[:trip_id])
+    @membership = Membership.new
     @user = current_user
   end
 
   def create
     @trip = Trip.find(params[:trip_id])
-    if @member.save
+    @membership = Membership.new(membership_params)
+    if :user_email != nil
+      if @membership.user_id == nil
+      @membership.user_id = User.find_by(email: params[:user_email]).id
+      end
+    end
+
+    if @membership.save
       @user = current_user
-      redirect_to user_trip_path(@user, @trip)
+      redirect_to trip_path(@trip)
     else
      render :new
     end
   end
 
-  def update
-  end
-
   def destroy
+    @member = Membership.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
+    @member.delete
+    redirect_to trip_path(@trip)
+
   end
 
 
 private
-  def member_params
-    params.require(:member).permit(:member_name, :member_email, :trip_id )
+  def membership_params
+    params.require(:membership).permit(:user_id, :trip_id)
   end
 
 

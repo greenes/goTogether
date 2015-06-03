@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
 
     resources :trips  do
-      resources :memberships, only: [:new, :create, :update, :delete]
-      resources :accommodations, only: [:index, :show, :new, :create, :update, :delete]
-      resources :activities, only: [:new, :create, :update, :delete]
-      resources :notes, only: [:new, :create, :update, :delete]
+      resources :memberships, only: [:new, :create, :update, :destroy]
+      resources :accommodations, only: [:index, :show, :new, :create, :update, :destroy]
+      resources :activities, only: [:new, :create, :update, :destroy]
+      resources :notes, only: [:new, :create, :update, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,9 +1,5 @@
 
-    <%= form_for [@user, @trip, @note] do |f| %>
-      <p>
-      <%= f.label :author %>
-      <%= f.text_field :author  %>
-      </p>
+    <%= form_for [@trip, @note] do |f| %>
 
       <p>
       <%= f.label :body %>
@@ -11,6 +7,7 @@
       </p>
 
       <%= f.hidden_field :trip_id, :value => @trip.id %>
+      <%= f.hidden_field :author, :value => current_user.email %>
 
       <p>
       <%= f.submit %>

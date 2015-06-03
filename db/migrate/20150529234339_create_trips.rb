@@ -4,6 +4,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :trip_name
       t.string :trip_location
       t.string :trip_dates
+      t.belongs_to :user
 
       t.timestamps null: false
     end

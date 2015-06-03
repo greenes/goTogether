@@ -25,8 +25,8 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       @user = current_user
-      @membership = Membership.new(membership_params)
-      redirect_to user_trip_path(@user, @trip)
+      @membership = Membership.create(trip_id: @trip.id, user_id: @user.id, pending: false)
+      redirect_to user_memberships_path(@user)
     else
      render :new
     end
@@ -39,7 +39,17 @@ class TripsController < ApplicationController
   #
   # end
 
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+
   def update
+    @trip = Trip.find(params[:id])
+    if @trip.update( trip_params )
+      redirect_to @trip
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -48,7 +58,7 @@ class TripsController < ApplicationController
 
 private
   def trip_params
-    params.require(:trip).permit(:trip_name, :trip_dates, :trip_location )
+    params.require(:trip).permit(:trip_name, :trip_dates, :trip_location, :user_id)
   end
 
   def membership_params

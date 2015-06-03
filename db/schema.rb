@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150602030208) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "trip_id"
+    t.string   "name"
     t.boolean  "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150602030208) do
     t.string   "author"
     t.text     "body"
     t.integer  "trip_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150602030208) do
     t.string   "trip_name"
     t.string   "trip_location"
     t.string   "trip_dates"
+    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150602030208) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

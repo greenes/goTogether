@@ -1,0 +1,23 @@
+<% if @membership.errors.any? %>
+<ul>
+    <% @membership.errors.full_messages.each do |err|%>
+    <li> <%=err%></li>
+    <%end%>
+
+</ul>
+<%end%>
+
+    <%= form_for [@trip, @membership] do |f| %>
+      <p>
+      <%= f.label :user_email, "Member's email address" %>
+      <%= text_field_tag :user_email %>
+      </p>
+
+      <%= f.hidden_field :trip_id, :value => @trip.id %>
+      <%= f.hidden_field :pending, :value => false %>
+
+      <p>
+      <%= f.submit %>
+      </p>
+
+    <%end%>

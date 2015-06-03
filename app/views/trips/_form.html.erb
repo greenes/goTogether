@@ -1,0 +1,32 @@
+<% if @trip.errors.any? %>
+<ul>
+    <% @trip.errors.full_messages.each do |err|%>
+    <li> <%=err%></li>
+    <%end%>
+
+</ul>
+<%end%>
+
+    <%= form_for [@trip] do |f| %>
+      <p>
+      <%= f.label :trip_name %>
+      <%= f.text_field :trip_name  %>
+      </p>
+
+      <p>
+      <%= f.label :trip_location %>
+      <%= f.text_field :trip_location %>
+      </p>
+
+      <p>
+      <%= f.label :trip_dates %>
+      <%= f.text_field :trip_dates %>
+      </p>
+
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+      <p>
+      <%= f.submit %>
+      </p>
+
+    <%end%>

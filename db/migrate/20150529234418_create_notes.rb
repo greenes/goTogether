@@ -4,6 +4,7 @@ class CreateNotes < ActiveRecord::Migration
       t.string :author
       t.text :body
       t.belongs_to :trip
+      t.belongs_to :user
 
       t.timestamps null: false
     end

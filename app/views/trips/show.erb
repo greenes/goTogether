@@ -2,17 +2,28 @@
   <h1 class='trip-title'><%= @trip.trip_name %></h1>
   <h2 class='trip-location'><%= @trip.trip_location %></h2>
   <h2 class='trip-dates'><%= @trip.trip_dates %></h2>
+  <% if current_user.id == @trip.user_id %>
+  <p class='edit-button'><%= link_to 'edit trip', edit_trip_path(@trip)%><p>
+    <%end%>
 </div>
 
 
   <div class='members'>
     <h2>Who is going on this trip?</h2>
-    <h3><%= @user.email %></h3>
-    <% @memberships.each do |member| %>
-        <p><%= member.member_name %></p>
-        <p><%= member.member_email %></p>
+    <h3><%= "Trip leader: " + @trip.user.email %></h3>
+    <% @memberships.each do |membership| %>
+        <p><% member = User.find(membership.user_id) %></p>
+        <p><%= "#{member.name} : #{member.email}" %>
+          <% if current_user.id == @trip.user_id %>
+          <%= form_tag trip_membership_path(@trip, membership.id), method: "delete" do %>
+            <%= submit_tag("remove")%>
+            <%end%>
+          <%end%>
+        </p>
     <%end%>
-    <p class='button'> <%=link_to 'add a member', new_trip_membership_path(@user, @trip)%> </p>
+    <% if current_user.id == @trip.user_id %>
+    <p class='button'> <%=link_to 'add a member', new_trip_membership_path(@trip)%></p>
+    <%end%>
   </div>
 
 <div class='itinerary'>
@@ -26,8 +37,8 @@
         <p><%= acc.acc_location %></p>
         <p><%= acc.acc_cost %></p>
     <%end%>
-    <p class='button'> <%=link_to 'add an accommodation', new_user_trip_accommodation_path(@user, @trip)%> </p>
-    <p class='button'> <%=link_to 'search for accommodations', user_trip_accommodations_path(@user, @trip)%> </p>
+    <p class='button'> <%=link_to 'add an accommodation', new_trip_accommodation_path(@trip)%> </p>
+    <p class='button'> <%=link_to 'search for accommodations', trip_accommodations_path(@trip)%> </p>
 
   </div>
 
@@ -37,10 +48,8 @@
         <p><%= link_to activity.act_name, activity.link %></p>
         <p><%= activity.act_location %></p>
         <p><%= activity.act_cost %></p>
-
-
     <%end%>
-    <p class='button'> <%=link_to 'add an activity', new_user_trip_activity_path(@user, @trip)%> </p>
+    <p class='button'> <%=link_to 'add an activity', new_trip_activity_path(@trip)%> </p>
   </div>
 </div>
 
@@ -51,5 +60,5 @@
     <% @notes.each do |note| %>
         <p><%= "#{note.author}: #{note.body}"%></p>
     <%end%>
-    <p class='button'> <%=link_to 'add a note', new_user_trip_note_path(@user, @trip)%> </p>
+    <p class='button'> <%=link_to 'add a note', new_trip_note_path(@trip)%> </p>
   </div>
