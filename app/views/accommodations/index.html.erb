@@ -1,8 +1,12 @@
-<p><%= form_tag "/trips/#{@trip.id}/accommodations", method: "get" do %>
-  <%= label_tag(:query, "Search for Accommodations:") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Search") %>
-<% end %></p>
+<div class='searchbar'>
+  <p><%= form_tag "/trips/#{@trip.id}/accommodations", method: "get" do %>
+    <%= label_tag(:query, "Enter a location to search for Accommodations:") %>
+    <%= text_field_tag(:query) %>
+    <%= submit_tag("Search") %>
+  <% end %></p>
+  <p class='power'>search powered by Zilyo
+    <%= link_to image_tag("https://crunchbase-production-res.cloudinary.com/image/upload/c_pad,h_58,w_58/v1397752273/1695424cd9bb56a32dfc138d0d4d9a79.png", height: "50", width: "50"), "https://zilyo.com/" %></p>
+</div>
 
 
 <div class='acc-results'
@@ -28,13 +32,11 @@
     <h3 class='result-attr'><%= "location: " + @location%></h3>
     <h3 class='result-attr'><%= "more details: " + @link%></h3>
     <h3 class='result-attr'><%= "type: " + @type%></h3>
-    <h3 class='result-attr'><%= "room type: " + @roomtype%></h3>
     <h3 class='result-attr'><%= "number of bathrooms: " + @baths%></h3>
     <h3 class='result-attr'><%= "bedrooms: " + @beds%></h3>
     <h3 class='result-attr'><%= "occupancy: " + @occupancy%></h3>
-    <h3 class='result-attr'><%= "beds: " + @numbeds%></h3>
-    <h3 class='result-attr'><%= "Cost per night: " + @pernight %></h3>
-    <h3 class='result-attr'><%= "Cost per week: " + @perweek %></h3>
+    <h3 class='result-attr'><%= "Cost per night: $" + @pernight %></h3>
+    <h3 class='result-attr'><%= "Cost per week: $" + @perweek %></h3>
     <h3 class='result-attr'><%= "description: " + @description%></h3>
 
     <%= link_to 'add to your trip', "/trips/#{@trip.id}/accommodations/new/#{index}"%>

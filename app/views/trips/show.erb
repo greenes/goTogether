@@ -10,13 +10,15 @@
 
   <div class='members'>
     <h2>Who is going on this trip?</h2>
-    <h3><%= "Trip leader: " + @trip.user.email %></h3>
+    <h3><%= "Trip leader: " + @trip.user.name %></h3>
+    <% index = 1%>
     <% @memberships.each do |membership| %>
         <p><% member = User.find(membership.user_id) %></p>
-        <p><%= "#{member.name} : #{member.email}" %>
+        <p><%= "#{index}. #{member.name} (#{member.email})" %>
           <% if current_user.id == @trip.user_id %>
           <%= form_tag trip_membership_path(@trip, membership.id), method: "delete" do %>
-            <%= submit_tag("remove")%>
+            <%= submit_tag("remove from trip")%>
+            <% index +=1 %>
             <%end%>
           <%end%>
         </p>
@@ -39,7 +41,8 @@
     <%end%>
     <p class='button'> <%=link_to 'add an accommodation', new_trip_accommodation_path(@trip)%> </p>
     <p class='button'> <%=link_to 'search for accommodations', trip_accommodations_path(@trip)%> </p>
-
+    <p class='power'>search powered by Zilyo
+      <%= link_to image_tag("https://crunchbase-production-res.cloudinary.com/image/upload/c_pad,h_58,w_58/v1397752273/1695424cd9bb56a32dfc138d0d4d9a79.png", height: "50", width: "50"), "https://zilyo.com/" %></p>
   </div>
 
   <div class='activitives'>
@@ -50,6 +53,9 @@
         <p><%= activity.act_cost %></p>
     <%end%>
     <p class='button'> <%=link_to 'add an activity', new_trip_activity_path(@trip)%> </p>
+    <p class='button'> <%=link_to 'search for activities', trip_activities_path(@trip)%> </p>
+    <p class='power'>search powered by
+    <%= link_to image_tag("http://www.hungrytowntours.com/Yelp_Logo.png", height: "50", width: "50"), "http://www.yelp.com/"%></p>
   </div>
 </div>
 

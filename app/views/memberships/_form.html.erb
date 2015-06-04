@@ -1,3 +1,4 @@
+<div class='form'>
 <% if @membership.errors.any? %>
 <ul>
     <% @membership.errors.full_messages.each do |err|%>
@@ -6,6 +7,7 @@
 
 </ul>
 <%end%>
+    <h3>Add a member to your trip</h3>
 
     <%= form_for [@trip, @membership] do |f| %>
       <p>
@@ -17,7 +19,8 @@
       <%= f.hidden_field :pending, :value => false %>
 
       <p>
-      <%= f.submit %>
+      <%= f.submit "Add to trip" %>
       </p>
 
     <%end%>
+</div>

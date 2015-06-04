@@ -1,46 +1,38 @@
+<div class='form'>
 
-<% if @results %>
-    <%= form_for [@trip, @accommodation] do |f| %>
+  <% if @accommodation.errors.any? %>
+  <ul>
+      <% @accommodation.errors.full_messages.each do |err|%>
+      <li> <%=err%></li>
+      <%end%>
 
-      <%= f.hidden_field :acc_name, :value => @type %>
-      <%= f.hidden_field :acc_location, :value => @location %>
-      <%= f.hidden_field :acc_link, :value => @link %>
-      <%= f.hidden_field :acc_cost, :value => @pernight %>
-      <%= f.hidden_field :trip_id, :value => @trip.id %>
+  </ul>
+  <%end%>
 
-      <p>
-      <%= f.submit %>
-      </p>
 
-    <%end%>
-
-<% else %>
+    <h3>Add an accommodation to your trip</h3>
 
     <%= form_for [@trip, @accommodation] do |f| %>
       <p>
-      <%= f.label :acc_name %>
+      <%= f.label :acc_name, "Name" %>
       <%= f.text_field :acc_name  %>
       </p>
 
       <p>
-      <%= f.label :acc_location %>
+      <%= f.label :acc_location, "Address" %>
       <%= f.text_field :acc_location  %>
       </p>
 
       <p>
-      <%= f.label :acc_cost %>
+      <%= f.label :acc_cost, "Cost per night" %>
       <%= f.text_field :acc_cost  %>
       </p>
 
       <p>
-      <%= f.label :acc_link %>
+      <%= f.label :acc_link, "Link to accommodation" %>
       <%= f.text_field :acc_link  %>
       </p>
 
-      <%= f.hidden_field :acc_name, :value => @type %>
-      <%= f.hidden_field :acc_location, :value => @location %>
-      <%= f.hidden_field :acc_link, :value => @link %>
-      <%= f.hidden_field :acc_cost, :value => @pernight %>
       <%= f.hidden_field :trip_id, :value => @trip.id %>
 
       <p>
@@ -48,4 +40,5 @@
       </p>
 
     <%end%>
-<%end%>
+
+</div>

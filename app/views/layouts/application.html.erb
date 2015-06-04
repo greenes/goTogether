@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GoTogether</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <div class='navbar'>
-      <% if current_user %>
-        <p class='navitem'><%= link_to 'Log-out', destroy_user_session_path, :method => :delete %></p>
-        <p class='navitem'><%= link_to 'Your trips', user_memberships_path(current_user.id) %></p>
-        <%end%>
-    </div>
-    <div style="clear:both;"></div>
-    </header>
+    <head>
+      <title>GoTogether</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+      <header>
+        <div class='navbar'>
+          <% if current_user %>
+            <div class='navitem'><%= link_to 'Log-out', destroy_user_session_path, :method => :delete %></div>
+            <div class='navitem'><%= link_to 'Your trips', user_memberships_path(current_user.id) %></div>
+            <%end%>
+        </div>
+        <div style="clear:both;"></div>
+        </header>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+    </body>
 </html>

@@ -1,16 +1,18 @@
-
+<div class='form'>
     <%= form_for [@trip, @note] do |f| %>
 
       <p>
-      <%= f.label :body %>
-      <%= f.text_field :body  %>
+      <%= f.label :body, "Post to the group" %>
+      <%= f.text_area :body  %>
       </p>
 
       <%= f.hidden_field :trip_id, :value => @trip.id %>
-      <%= f.hidden_field :author, :value => current_user.email %>
+      <%= f.hidden_field :author, :value => current_user.name %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
 
       <p>
       <%= f.submit %>
       </p>
 
     <%end%>
+</div>

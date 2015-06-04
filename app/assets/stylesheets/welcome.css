@@ -1,68 +1,73 @@
 
 
-header a {
-  float: right;
-  top: 5px;
+  html {
+    background:url('http://www.wallpapersdesign.net/wp-content/uploads/2012/11/Mountainscape-And-Blue-Lake.jpg') no-repeat center center fixed;
+    -webkit-background-size: 120%;
+    -moz-background-size: 120%;
+    -o-background-size: 120%;
+    background-size: 120%;
+  }
 
-}
+  .log-in-screen, .signup {
+    color: #00113a;
+    opacity: .8;
+    background: #e1e2df;
+    border-radius: 15px;
+    width: 800px;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 200px auto;
+  }
 
-html {
-  background:url('http://www.wallpapersdesign.net/wp-content/uploads/2012/11/Mountainscape-And-Blue-Lake.jpg') no-repeat center center fixed;
-  -webkit-background-size: 120%;
-  -moz-background-size: 120%;
-  -o-background-size: 120%;
-  background-size: 120%;
-}
+  .homebox {
+    color: #00113a;
+    opacity: .8;
+    background: #e1e2df;
+    border-radius: 15px;
+    width: 800px;
+    padding: 10px;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 200px auto;
+  }
 
-.homebox {
-  color: #00113a;
-  opacity: .8;
-  background: #e1e2df;
-  border-radius: 15px;
-  width: 800px;
-  padding: 10px;
-  text-align: center;
-  font-family: arial, sans-serif;
-  margin: 200px auto;
-}
+  .main-title, .main-tagline{
+    margin: 10px auto;
+  }
 
-.main-title, .main-tagline{
-  margin: 10px auto;
-}
+  .log-out a, .log-in a{
+    display: block;
+    padding: 15px;
+    margin: auto;
+    width: 200px;
+    background: #89035b;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    color:white;
+    border-radius: 5px;
+  }
 
-.log-out a, .log-in a{
-  display: block;
-  padding: 15px;
-  margin: auto;
-  width: 200px;
-  background: #89035b;
-  text-decoration: none;
-  font-family: arial, sans-serif;
-  color:white;
-  border-radius: 5px;
-}
+  .forgot a, .member a {
+    display: block;
+    margin: 0px auto;
+    padding: 15px;
+    width: 300px;
+    background: #89035b;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    color:white;
+    border-radius: 5px;
+  }
 
-.forgot a, .member a {
-  display: block;
-  margin: 0px auto;
-  padding: 15px;
-  width: 300px;
-  background: #89035b;
-  text-decoration: none;
-  font-family: arial, sans-serif;
-  color:white;
-  border-radius: 5px;
-}
+  .main-tagline {
+    display: inline-block;
 
-.main-tagline {
-  display: inline-block;
+  }
 
-}
+  .main-title {
+    display: block;
+  }
 
-.main-title {
-  display: block;
-}
-
-.signup {
-  padding: 10px;
-}
+  .signup {
+    padding: 10px;
+  }

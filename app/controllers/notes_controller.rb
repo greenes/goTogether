@@ -14,7 +14,7 @@ class NotesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     if @note.save
       @user = current_user
-      redirect_to trip_path(@user, @trip)
+      redirect_to trip_path(@trip)
     else
      render :new
     end

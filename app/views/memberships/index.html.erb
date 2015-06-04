@@ -1,6 +1,15 @@
-<h1>Your trips</h1>
+
+<div class='trip-index'>
+
+  <h1>Your trips:</h1>
+
+  <% @trips.each do |trip| %>
+        <h3 id='trip-index'><%= link_to "#{trip.trip_name}", trip_path(trip.id) %></h3>
+
+  <% end %>
 
 
+  <h1>Trips you belong to:</h1>
 
   <% @memberships.each do |membership| %>
         <% trip = Trip.find(membership.trip_id)%>
@@ -10,3 +19,5 @@
 
 
   <h2 id='add-trip'><%= link_to 'add a new trip', new_trip_path%></h2>
+
+</div>

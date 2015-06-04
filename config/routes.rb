@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :trips  do
       resources :memberships, only: [:new, :create, :update, :destroy]
       resources :accommodations, only: [:index, :show, :new, :create, :update, :destroy]
-      resources :activities, only: [:new, :create, :update, :destroy]
+      resources :activities, only: [:index, :new, :create, :update, :destroy]
       resources :notes, only: [:new, :create, :update, :destroy]
   end
 

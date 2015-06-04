@@ -5,6 +5,7 @@ class MembershipsController < ApplicationController
   def index
     @user = current_user
     @memberships = Membership.where(:user_id => @user.id)
+    @trips = Trip.where(:user_id => @user.id)
   end
 
   def show

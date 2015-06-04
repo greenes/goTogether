@@ -1,11 +1,12 @@
-<% if @trip.errors.any? %>
-<ul>
+<div class='form'>
+  <% if @trip.errors.any? %>
+  <ul>
     <% @trip.errors.full_messages.each do |err|%>
     <li> <%=err%></li>
     <%end%>
 
-</ul>
-<%end%>
+  </ul>
+  <%end%>
 
     <%= form_for [@trip] do |f| %>
       <p>
@@ -30,3 +31,4 @@
       </p>
 
     <%end%>
+  </div>
