@@ -13,11 +13,13 @@
 
   <% @memberships.each do |membership| %>
         <% trip = Trip.find(membership.trip_id)%>
+        <% if trip.user_id != current_user.id %>
         <h3 id='trip-index'><%= link_to "#{trip.trip_name}", trip_path(membership.trip_id) %></h3>
+        <%end%>
 
   <% end %>
 
 
-  <h2 id='add-trip'><%= link_to 'add a new trip', new_trip_path%></h2>
+  <h2 class='edit-button'><%= link_to 'add a new trip', new_trip_path%></h2>
 
 </div>

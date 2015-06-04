@@ -1,6 +1,8 @@
 
 
   html {
+    height: 100%;
+    width: 100%;
     background:url('http://www.wallpapersdesign.net/wp-content/uploads/2012/11/Mountainscape-And-Blue-Lake.jpg') no-repeat center center fixed;
     -webkit-background-size: 120%;
     -moz-background-size: 120%;
@@ -15,7 +17,7 @@
     border-radius: 15px;
     width: 800px;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     margin: 200px auto;
   }
 
@@ -27,7 +29,7 @@
     width: 800px;
     padding: 10px;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     margin: 200px auto;
   }
 
@@ -40,23 +42,28 @@
     padding: 15px;
     margin: auto;
     width: 200px;
-    background: #89035b;
+    background: #558188;
     text-decoration: none;
-    font-family: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     color:white;
     border-radius: 5px;
   }
 
   .forgot a, .member a {
     display: block;
-    margin: 0px auto;
+    margin: auto;
     padding: 15px;
     width: 300px;
-    background: #89035b;
+    background: #558188;
     text-decoration: none;
-    font-family: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     color:white;
     border-radius: 5px;
+  }
+
+  .forgot, .member {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .main-tagline {

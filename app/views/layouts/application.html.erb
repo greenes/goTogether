@@ -5,10 +5,12 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
+      <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     </head>
     <body>
       <header>
         <div class='navbar'>
+            <div class='logo'><%= link_to 'goTogether', root_path %></div>
           <% if current_user %>
             <div class='navitem'><%= link_to 'Log-out', destroy_user_session_path, :method => :delete %></div>
             <div class='navitem'><%= link_to 'Your trips', user_memberships_path(current_user.id) %></div>

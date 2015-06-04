@@ -25,7 +25,9 @@ class MembershipsController < ApplicationController
   def create
     @trip = Trip.find(params[:trip_id])
     @membership = Membership.new(membership_params)
-    if :user_email != nil
+    if :user_email == nil
+      render :new
+    else
       if @membership.user_id == nil
       @membership.user_id = User.find_by(email: params[:user_email]).id
       end
@@ -44,7 +46,6 @@ class MembershipsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @member.delete
     redirect_to trip_path(@trip)
-
   end
 
 

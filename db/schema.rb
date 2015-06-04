@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150602030208) do
   create_table "activities", force: :cascade do |t|
     t.string   "act_name"
     t.string   "act_location"
-    t.string   "act_cost"
     t.string   "link"
     t.integer  "trip_id"
     t.datetime "created_at",   null: false

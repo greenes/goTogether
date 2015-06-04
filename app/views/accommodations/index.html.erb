@@ -6,6 +6,7 @@
   <% end %></p>
   <p class='power'>search powered by Zilyo
     <%= link_to image_tag("https://crunchbase-production-res.cloudinary.com/image/upload/c_pad,h_58,w_58/v1397752273/1695424cd9bb56a32dfc138d0d4d9a79.png", height: "50", width: "50"), "https://zilyo.com/" %></p>
+    <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
 </div>
 
 
@@ -27,7 +28,6 @@
     <% @description = @results["result"][index]["attr"]["description"].to_s%>
 
 
-
     <div class='thumbnail'><%= image_tag("#{@results["result"][index]["photos"][0]["small"]}", height: "300", width: "300")%></h3><div>
     <h3 class='result-attr'><%= "location: " + @location%></h3>
     <h3 class='result-attr'><%= "more details: " + @link%></h3>
@@ -39,7 +39,15 @@
     <h3 class='result-attr'><%= "Cost per week: $" + @perweek %></h3>
     <h3 class='result-attr'><%= "description: " + @description%></h3>
 
-    <%= link_to 'add to your trip', "/trips/#{@trip.id}/accommodations/new/#{index}"%>
+    <%= form_for [@trip, @accommodation] do |f| %>
+    <%= f.hidden_field :acc_name, :value => @type %>
+    <%= f.hidden_field :acc_location, :value => @location %>
+    <%= f.hidden_field :acc_cost, :value => @pernight %>
+    <%= f.hidden_field :acc_link, :value => @link %>
+    <%= f.hidden_field :trip_id, :value => @trip.id %>
+      <%= submit_tag 'Add to Itinerary' %>
+    <% end %>
+
     <% index = index + 1 %>
 
     <%end%>

@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
       def index
         @user = current_user
         @trip = Trip.find(params[:trip_id])
+        @activity = Activity.new
         if params[:query]
           @results = Activity.search(params[:query])
         else
@@ -29,10 +30,26 @@ class ActivitiesController < ApplicationController
         end
       end
 
+      def edit
+        @activity = Activity.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+      end
+
       def update
+        @activity = Activity.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+        if @activity.update( activity_params )
+          redirect_to @trip
+        else
+          render :edit
+        end
       end
 
       def destroy
+        @activity = Activity.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+        @activity.delete
+        redirect_to trip_path(@trip)
       end
 
 

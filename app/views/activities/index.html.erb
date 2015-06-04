@@ -1,23 +1,37 @@
-<div class='searchbar'>
-<p><%= form_tag "/trips/#{@trip.id}/activities", method: "get" do %>
-  <%= label_tag(:query, "Enter a location to search for Food and Activities:") %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Search") %>
-<% end %></p>
-<p class='power'>search powered by
-<%= link_to image_tag("http://www.hungrytowntours.com/Yelp_Logo.png", height: "50", width: "50"), "http://www.yelp.com/"%></p>
-</div>
+  <div class='searchbar'>
+  <p><%= form_tag "/trips/#{@trip.id}/activities", method: "get" do %>
+    <%= label_tag(:query, "Enter a location to search for Food and Activities:") %>
+    <%= text_field_tag(:query) %>
+    <%= submit_tag("Search") %>
+  <% end %></p>
+  <p class='power'>search powered by
+  <%= link_to image_tag("http://www.hungrytowntours.com/Yelp_Logo.png", height: "50", width: "50"), "http://www.yelp.com/"%></p>
+  <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
+  </div>
 
-  <div class="act-results">
+  <div class="act-result-box">
   <% index = 0%>
   <%result_ary = @results.businesses%>
   <% while index < result_ary.length do %>
-    <h3 class='act-results'><%= "#{index + 1}. "%></h3>
-    <h3><%= image_tag ("#{@results.businesses[index].image_url}")%></h3>
+    <h3 class='act-number'><%= "#{index + 1}. "%></h3>
+
+    <% @name = @results.businesses[index].name %>
+    <% @link = @results.businesses[index].mobile_url %>
+    <% @location = @results.businesses[index].location.display_address[0] %>
+    
+    <h3 class='act-results'><%= image_tag ("#{@results.businesses[index].image_url}")%></h3>
     <h3 class='act-results'><%=link_to @results.businesses[index].name, @results.businesses[index].mobile_url %></h3>
-    <h3><%= image_tag ("#{@results.businesses[index].rating_img_url_large}")%></h3>
+    <h3 class='act-results'><%= image_tag ("#{@results.businesses[index].rating_img_url_large}")%></h3>
     <h3 class='act-results'><%= @results.businesses[index].location.display_address[0] %></h3>
     <h3 class='act-results'><%= @results.businesses[index].location.display_address[1] %></h3>
+
+    <%= form_for [@trip, @activity] do |f| %>
+    <%= f.hidden_field :act_name, :value => @name %>
+    <%= f.hidden_field :act_location, :value => @location %>
+    <%= f.hidden_field :link, :value => @link %>
+    <%= f.hidden_field :trip_id, :value => @trip.id %>
+      <%= submit_tag 'Add to Itinerary' %>
+    <% end %>
 
     <% index +=1 %>
     <%end%>

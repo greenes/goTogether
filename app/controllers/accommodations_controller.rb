@@ -5,6 +5,7 @@ class AccommodationsController < ApplicationController
       def index
         @user = current_user
         @trip = Trip.find(params[:trip_id])
+        @accommodation = Accommodation.new
         if params[:query]
           @results = Accommodation.search(params[:query])
         else
@@ -35,10 +36,26 @@ class AccommodationsController < ApplicationController
         end
       end
 
+      def edit
+        @accommodation = Accommodation.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+      end
+
       def update
+        @accommodation = Accommodation.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+        if @accommodation.update( accommodation_params )
+          redirect_to @trip
+        else
+          render :edit
+        end
       end
 
       def destroy
+        @accommodation = Accommodation.find(params[:id])
+        @trip = Trip.find(params[:trip_id])
+        @accommodation.delete
+        redirect_to trip_path(@trip)
       end
 
 

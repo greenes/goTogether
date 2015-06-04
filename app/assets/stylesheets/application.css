@@ -16,85 +16,136 @@
 body {
   padding: 0;
   margin: 0;
+  background: #f0efe4;
 }
 
  .navbar{
    display: inline-block;
    height: 50px;
    width: 100%;
-   background: #b0dddf;
+   background: #558188;
    text-decoration: none;
    margin: 0px;
    top:0px;
  }
 
- .navitem a{
+ .navitem a, .logo a{
    text-decoration: none;
    float: right;
    display: inline-block;
    text-align: right;
    padding: 10px;
-   font-family: arial, sans-serif;
-   color: #89035b;
+   font-family: 'Varela Round', sans-serif;
+   color: #ff9c5f;
+ }
+
+ .logo a{
+   float: left;
+   font-size: 30px;
+   font-weight: bold;
  }
 
  .trip-header {
-   color: #00113a;
-   opacity: .8;
-   background: #b0dddf;
+   color: #253939;
+   background: #ff9c5f;
    border-radius: 15px;
    width: 800px;
    text-align: center;
-   font-family: arial, sans-serif;
-   margin: auto;
+   font-family: 'Varela Round', sans-serif;
+   margin: 10px auto;
+   padding: 10px;
  }
 
  .members, .itinerary, .notes  {
-   color: #00113a;
-   opacity: .8;
-   background: #b0dddf;
+   color: #253939;
    border-radius: 15px;
-   width: 500px;
+   width: 25%;
    text-align: center;
-   font-family: arial, sans-serif;
+   font-family: 'Varela Round', sans-serif;
    margin: 20px;
    padding: 20px;
    float: left;
-
+   display: inline-block;
  }
 
-  .button a {
+  .member-name {
+    color:#ff9c5f;
+  }
+
+  .ac-link a{
     text-decoration: none;
-    background: #e87a3f;
-    width: 200px;
-    color: #00113a;
-    margin: 10px;
+    color: #ff8b6c;
+  }
+
+  .members {
+    background: #558188;
+  }
+
+  .itinerary{
+    background: #5fa292;
+  }
+
+  .notes {
+    background: #558188;
+  }
+
+  .trip-index {
+    background: #5fa292;
+    color: #253939;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+    padding: 20px;
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .trip-index a {
+    text-decoration: none;
+    color: #253939;
+    background: #ff9c5f;
     padding: 10px;
     border-radius: 5px;
   }
 
-  .edit-button a {
+  .button a {
     text-decoration: none;
-    background: #e87a3f;
+    font-size: 15px;
+    background: #ff8b6c;
+    width: 200px;
+    color: #00113a;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .edit-button a {
+    font-size: 15px;
+    padding: 5px;
+    text-decoration: none;
+    background: #558188;
     width: 200px;
     color: #00113a;
     border-radius: 5px;
   }
 
-  .acc-results, .act-results {
+  .acc-results, .act-result-box {
     background: #b0dddf;
     width: 50%;
     margin: auto;
-    text-align: left;
+    line-height: 1;
+    text-align: center;
     border-radius: 5px;
     padding: 20px;
   }
 
-  .trip-index {
-    width: 40%;
-    margin: auto;
-    text-align: center;
-    font-family: arial, sans-serif;
+  .act-results {
+    margin: 3px;
+  }
+
+  .act-number {
+    margin: 30px auto 3px auto;
   }
 
   .form {
@@ -103,7 +154,7 @@ body {
     background: #b0dddf;
     padding: 50px;
     border-radius: 5px;
-    font-family: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     font-size: 30px;
 
   }
@@ -113,7 +164,7 @@ body {
   }
 
   .searchbar {
-    font: arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     background: #b0dddf;
     width: 50%;
     border-radius: 5px;

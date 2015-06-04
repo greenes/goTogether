@@ -1,4 +1,15 @@
+
 <div class='form'>
+
+  <% if @note.errors.any? %>
+  <ul>
+      <% @note.errors.full_messages.each do |err|%>
+      <li> <%=err%></li>
+      <%end%>
+
+  </ul>
+  <%end%>
+
     <%= form_for [@trip, @note] do |f| %>
 
       <p>
@@ -15,4 +26,7 @@
       </p>
 
     <%end%>
+
+    <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
+    
 </div>
