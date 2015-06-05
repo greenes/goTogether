@@ -42,10 +42,10 @@
     padding: 15px;
     margin: auto;
     width: 200px;
-    background: #558188;
+    background: #ff9c5f;
     text-decoration: none;
     font-family: 'Varela Round', sans-serif;
-    color:white;
+    color: #00113a;
     border-radius: 5px;
   }
 
@@ -54,10 +54,10 @@
     margin: auto;
     padding: 15px;
     width: 300px;
-    background: #558188;
+    background: #ff9c5f;
     text-decoration: none;
     font-family: 'Varela Round', sans-serif;
-    color:white;
+    color: #00113a;
     border-radius: 5px;
   }
 
@@ -68,7 +68,6 @@
 
   .main-tagline {
     display: inline-block;
-
   }
 
   .main-title {

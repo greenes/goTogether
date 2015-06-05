@@ -9,20 +9,20 @@
 
 
   <div class='members'>
-    <h2>Who is going on this trip?</h2>
+    <h2 class='box-title'>Members (<%= @memberships.length%>)</h2>
     <h3><%= "Trip leader: " + @trip.user.name %></h3>
-    <% index = 1%>
-    <% @memberships.each do |membership| %>
+      <% @memberships.each do |membership| %>
         <p><% member = User.find(membership.user_id) %></p>
-        <p><%= "#{index}. "%><span class='member-name'><%= "#{member.name} "%></span><%="(#{member.email})" %>
+        <p><span class='member-name'><%= "#{member.name} "%></span><span class='member-email'><%="(#{member.email})" %></span>
           <% if current_user.id == @trip.user_id %>
+
           <%= form_tag trip_membership_path(@trip, membership.id), method: "delete" do %>
             <%= submit_tag("remove from trip")%>
-            <% index +=1 %>
+    
             <%end%>
           <%end%>
         </p>
-    <%end%>
+      <%end%>
     <% if current_user.id == @trip.user_id %>
     <p class='button'> <%=link_to 'add a member', new_trip_membership_path(@trip)%></p>
     <%end%>
@@ -30,9 +30,8 @@
 
 <div class='itinerary'>
   <div class='accommodations'>
-    <h2>Itinerary Ideas</h2>
 
-    <h3>Accommodations</h3>
+    <h2 class='box-title'>Accommodations:</h2>
 
     <% @accommodations.each do |acc| %>
         <p class='ac-link'><%=link_to acc.acc_name, acc.acc_link %></p>
@@ -49,8 +48,8 @@
       <%= link_to image_tag("https://crunchbase-production-res.cloudinary.com/image/upload/c_pad,h_58,w_58/v1397752273/1695424cd9bb56a32dfc138d0d4d9a79.png", height: "50", width: "50"), "https://zilyo.com/" %></p>
   </div>
 
-  <div class='activitives'>
-    <h3>Activities</h3>
+  <div class='activities'>
+    <h2 class='box-title'>Activities:</h2>
     <% @activities.each do |activity| %>
         <p class='ac-link'><%= link_to activity.act_name, activity.link %></p>
         <p><%= activity.act_location %></p>
@@ -68,10 +67,11 @@
 
 
   <div class='notes'>
-    <h2>Notes</h2>
+    <h2 class='box-title'>Notes</h2>
 
-    <% @notes.each do |note| %>
+    <% @notes.reverse_each do |note| %>
     <p><span class='member-name'><%= "#{note.author}: "%></span><%="#{note.body}" %>
     <%end%>
     <p class='button'> <%=link_to 'add a note', new_trip_note_path(@trip)%> </p>
   </div>
+</div>

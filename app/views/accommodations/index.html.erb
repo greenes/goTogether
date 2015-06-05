@@ -42,7 +42,7 @@
     <%= form_for [@trip, @accommodation] do |f| %>
     <%= f.hidden_field :acc_name, :value => @type %>
     <%= f.hidden_field :acc_location, :value => @location %>
-    <%= f.hidden_field :acc_cost, :value => @pernight %>
+    <%= f.hidden_field :acc_cost, :value => "#{@pernight} per night"%>
     <%= f.hidden_field :acc_link, :value => @link %>
     <%= f.hidden_field :trip_id, :value => @trip.id %>
       <%= submit_tag 'Add to Itinerary' %>

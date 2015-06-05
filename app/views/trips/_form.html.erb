@@ -1,11 +1,10 @@
 <div class='form'>
   <% if @trip.errors.any? %>
-  <ul>
+
     <% @trip.errors.full_messages.each do |err|%>
-    <li> <%=err%></li>
+      <p class='error'><%=err%></p>
     <%end%>
 
-  </ul>
   <%end%>
 
     <%= form_for [@trip] do |f| %>
@@ -32,6 +31,8 @@
 
     <%end%>
 
+    <% if @trip.id != nil %>
     <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
-    
+    <%end%>
+
   </div>

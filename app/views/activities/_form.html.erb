@@ -1,12 +1,11 @@
 
 <div class='form'>
   <% if @activity.errors.any? %>
-  <ul>
+
       <% @activity.errors.full_messages.each do |err|%>
-      <li> <%=err%></li>
+      <p class='error'><%=err%></p>
       <%end%>
 
-  </ul>
   <%end%>
 
   <h3>Add an activity to your trip</h3>
@@ -23,11 +22,6 @@
       </p>
 
       <p>
-      <%= f.label :act_cost, "Cost" %>
-      <%= f.text_field :act_cost  %>
-      </p>
-
-      <p>
       <%= f.label :link, "Link" %>
       <%= f.text_field :link  %>
       </p>
@@ -40,5 +34,5 @@
 
     <%end%>
     <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
-    
+
   </div>

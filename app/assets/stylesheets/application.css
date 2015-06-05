@@ -13,11 +13,20 @@
  *= require_self
 */
 
-body {
-  padding: 0;
-  margin: 0;
-  background: #f0efe4;
-}
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    height: 100%;
+    width: 100%;
+    background:url('http://previews.123rf.com/images/fourleaflover/fourleaflover1407/fourleaflover140700007/30189502-A-seamless-texture-composed-by-passport-stamps-illustrations-of-a-grunge-paper-background--Stock-Vector.jpg') no-repeat center center fixed;
+    -webkit-background-size: 120%;
+    -moz-background-size: 120%;
+    -o-background-size: 120%;
+    background-size: 120%;
+  }
 
  .navbar{
    display: inline-block;
@@ -60,33 +69,53 @@ body {
    color: #253939;
    border-radius: 15px;
    width: 25%;
-   text-align: center;
    font-family: 'Varela Round', sans-serif;
    margin: 20px;
    padding: 20px;
    float: left;
    display: inline-block;
+   box-shadow: 5px 5px 10px #888888;
+ }
+
+ .box-title{
+   border: 2px solid #f0efe4;
+   border-radius: 5px;
+   text-align: center;
  }
 
   .member-name {
     color:#ff9c5f;
   }
 
+  .member-line {
+    border-bottom: 2px solid #5fa292;
+    width: 80%;
+    margin: auto;
+    padding: 5px; 
+  }
+
+  .member-email {
+    font-size: 13px;
+  }
+
   .ac-link a{
-    text-decoration: none;
+    text-decoration: underline;
     color: #ff8b6c;
   }
 
   .members {
     background: #558188;
+    text-align: center;
   }
 
   .itinerary{
     background: #5fa292;
+    text-align: left;
   }
 
   .notes {
     background: #558188;
+    text-align: left;
   }
 
   .trip-index {
@@ -99,6 +128,7 @@ body {
     width: 50%;
     margin: 20px auto;
     text-align: center;
+
   }
 
   .trip-index a {
@@ -131,13 +161,17 @@ body {
   }
 
   .acc-results, .act-result-box {
-    background: #b0dddf;
+    background: #5fa292;
     width: 50%;
     margin: auto;
     line-height: 1;
-    text-align: center;
+    text-align: left;
     border-radius: 5px;
     padding: 20px;
+    font-family: 'Varela Round', sans-serif;
+    color: #253939;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px #888888;
   }
 
   .act-results {
@@ -151,11 +185,13 @@ body {
   .form {
     width: 40%;
     margin: 50px auto;
-    background: #b0dddf;
+    background: #5fa292;
+    color: #253939;
     padding: 50px;
     border-radius: 5px;
     font-family: 'Varela Round', sans-serif;
     font-size: 30px;
+    box-shadow: 5px 5px 10px #888888;
 
   }
 
@@ -165,9 +201,15 @@ body {
 
   .searchbar {
     font-family: 'Varela Round', sans-serif;
-    background: #b0dddf;
+    background: #5fa292;
     width: 50%;
     border-radius: 5px;
     margin: 20px auto;
     padding: 20px;
+    text-align: center;
+    box-shadow: 5px 5px 10px #888888;
+  }
+
+  .error {
+    color: #ff8b6c;
   }

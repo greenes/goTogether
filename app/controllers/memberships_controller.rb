@@ -29,7 +29,7 @@ class MembershipsController < ApplicationController
       render :new
     else
       if @membership.user_id == nil
-      @membership.user_id = User.find_by(email: params[:user_email]).id
+        @membership.user = User.find_by(email: params[:user_email])
       end
     end
 

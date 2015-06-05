@@ -1,16 +1,15 @@
 <div class='form'>
 
   <% if @accommodation.errors.any? %>
-  <ul>
+
       <% @accommodation.errors.full_messages.each do |err|%>
-      <li> <%=err%></li>
+      <p class='error'><%=err%></p>
       <%end%>
 
-  </ul>
   <%end%>
 
 
-    <h3>Add an accommodation to your trip</h3>
+    <h3>Add an accommodation to your trip:</h3>
 
     <%= form_for [@trip, @accommodation] do |f| %>
       <p>

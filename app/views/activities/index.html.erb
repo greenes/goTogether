@@ -1,9 +1,10 @@
   <div class='searchbar'>
   <p><%= form_tag "/trips/#{@trip.id}/activities", method: "get" do %>
-    <%= label_tag(:query, "Enter a location to search for Food and Activities:") %>
+    <%= label_tag(:query, "Enter a location to search for food and activities") %>
     <%= text_field_tag(:query) %>
     <%= submit_tag("Search") %>
   <% end %></p>
+
   <p class='power'>search powered by
   <%= link_to image_tag("http://www.hungrytowntours.com/Yelp_Logo.png", height: "50", width: "50"), "http://www.yelp.com/"%></p>
   <p class='button'><%=link_to "back to trip", trip_path(@trip)%></p>
@@ -18,7 +19,7 @@
     <% @name = @results.businesses[index].name %>
     <% @link = @results.businesses[index].mobile_url %>
     <% @location = @results.businesses[index].location.display_address[0] %>
-    
+
     <h3 class='act-results'><%= image_tag ("#{@results.businesses[index].image_url}")%></h3>
     <h3 class='act-results'><%=link_to @results.businesses[index].name, @results.businesses[index].mobile_url %></h3>
     <h3 class='act-results'><%= image_tag ("#{@results.businesses[index].rating_img_url_large}")%></h3>
