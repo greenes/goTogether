@@ -46,6 +46,10 @@ class TripsController < ApplicationController
       end
 
       def destroy
+        @trip = Trip.find(params[:id])
+        @memberships = Membership.where(:trip_id => @trip.id)
+        @trip.delete
+        redirect_to user_memberships_path(current_user.id)
       end
 
 
