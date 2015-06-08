@@ -16,6 +16,7 @@
   <% while index < result_ary.length do %>
     <h3 class='act-number'><%= "#{index + 1}. "%></h3>
 
+    <!-- see my suggestions for accomodations, same thing applies here.  -->
     <% @name = @results.businesses[index].name %>
     <% @link = @results.businesses[index].mobile_url %>
     <% @location = @results.businesses[index].location.display_address[0] %>

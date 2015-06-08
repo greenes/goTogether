@@ -25,6 +25,8 @@ class TripsController < ApplicationController
         @trip = Trip.new(trip_params)
         if @trip.save
           @user = current_user
+          # you can shorten this to:
+          # @membership = current_user.memeberships.create(trip: @trip)
           @membership = Membership.create(trip_id: @trip.id, user_id: @user.id)
           redirect_to user_memberships_path(@user)
         else
