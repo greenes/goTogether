@@ -13,8 +13,15 @@
 <div class='acc-results'
   <% num_of_results = @results["ids"].length %>
   <% index = 0%>
+  <!-- there's a lot of logic here, can't you do @results.each do |result| ? -->
   <%= while index < num_of_results do %>
     <h3 class='result-number'><%= "#{index + 1}. "%> </h3>
+    <!-- no need to create instance (@) vars inside the view. A simple local variable
+         is fine. Also, it may be worthwhile to create a plain old ruby class to
+         represent `AccomodationResults`, and return an array of those instances
+         to this view. That class can take care of the details of how to parse
+         the results and pull out the relevant info.
+         That way, your code would look more like `result.location`, `result.type`, etc  --> 
     <% @location = @results["result"][index]["location"]["all"]%>
     <% @link = @results["result"][index]["provider"]["url"].to_s%>
     <% @type = @results["result"][index]["attr"]["propType"]["text"]%>

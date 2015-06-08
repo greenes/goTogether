@@ -3,6 +3,8 @@ class AccommodationsController < ApplicationController
       before_action :authenticate_user!
 
       def index
+        # usually, you don't need to create a separate variable for @user,
+        # just use the current_user method wherever you'd use @user
         @user = current_user
         @trip = Trip.find(params[:trip_id])
         @accommodation = Accommodation.new

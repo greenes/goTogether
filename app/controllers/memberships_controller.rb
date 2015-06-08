@@ -25,6 +25,9 @@ class MembershipsController < ApplicationController
   def create
     @trip = Trip.find(params[:trip_id])
     @membership = Membership.new(membership_params)
+    # I don't think this line is doing what you think it is... a symbol
+    # `:user_email` will _never_ equal nil, so this `if` statement always
+    # enters the else case. Perhaps you meant params[:user_email]?
     if :user_email == nil
       render :new
     else

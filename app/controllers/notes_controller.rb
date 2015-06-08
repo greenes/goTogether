@@ -20,6 +20,8 @@ class NotesController < ApplicationController
     end
   end
 
+  # probably best not to leave non-functional methods around, or at least
+  # comment them as pending implementation.
   def update
   end
 
